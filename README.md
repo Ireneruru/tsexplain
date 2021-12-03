@@ -3,9 +3,11 @@
 
 ## Compile
 
-    ```mkdir build```
-    ```cmake  .. ```
-    ```make ```
+``` mkdir build
+    
+    cmake  .. 
+
+    make ```
 
 ## Run experiment 
 
