@@ -3,11 +3,11 @@
 
 ## Compile
 
-```mkdir build```
+    ```mkdir build```
 
-```cmake  .. ```
+    ```cmake  .. ```
 
-```make ```
+    ```make ```
 
 ## Run experiment 
 
@@ -15,7 +15,7 @@
 
 2. Run TSExplain 
 
-```python RunExp.py ../config/XXXX.yaml```
+    ```python RunExp.py ../config/XXXX.yaml```
 
 3. Results can be found in exp.db and expr_output/
 
