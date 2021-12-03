@@ -4,9 +4,7 @@
 ## Compile
 
     ```mkdir build```
-
     ```cmake  .. ```
-
     ```make ```
 
 ## Run experiment 
