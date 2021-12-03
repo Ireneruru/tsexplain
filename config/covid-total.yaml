@@ -1,0 +1,26 @@
+dataset: covid
+granularity: day
+tsv_file: /Users/yiru/Project/TSExplain/dataset/Covid/covid.tsv
+feature_hier:
+  - features:
+    - state
+time_cols:
+  - month
+  - day
+val_col: total-confirmed-cases
+try_seg_len_ratio: 0.05
+try_total_len_ratio: 3
+supp_ratio: 0.001
+time_min: 1 22
+time_max: 12 31
+post_process: 0
+explain_time_min: 1 22
+explain_time_max: 12 31
+metric: MChangeAbs
+topK: 3
+pred_len: 3
+sim: mutual
+seg_number: 20
+min_len: 2
+min_dist: 0
+cascading_opt: 1
