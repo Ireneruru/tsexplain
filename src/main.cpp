@@ -5,6 +5,8 @@ using namespace std;
 int main(int argc, char* argv[])
 {
     string spec_path = string(argv[1]);
+    string output_prefix = string(argv[2]);
+
     Spec spec = parse_spec_from_file(spec_path);
     // initialize data source
     DataSource *source;
@@ -15,7 +17,18 @@ int main(int argc, char* argv[])
     compute_trendline(spec, source);
     source->clear();
 
-    if (spec.try_seg_len < timeline.size()) {
+    if (spec.starts.size() == spec.seg_number) {
+        valid_time.clear();
+        valid_time.resize(timeline.size(), false);
+        valid_time_idx.clear();
+        for (auto& s : spec.starts) {
+            valid_time[s] = true;
+            valid_time_idx.push_back(s);
+        }
+        valid_time[T - 1] = true;
+        valid_time_idx.push_back(T - 1);
+    }
+    else if (spec.try_seg_len < timeline.size()) {
         // use two phase strategy
         phase1 = true;
         valid_time.clear();
@@ -75,6 +88,7 @@ int main(int argc, char* argv[])
         cout << time_to_string(timeline[all_starts.rbegin()->at(i)]) << " ";
     cout << endl;
 
+    auto vis_start = CurrentTimeMillis();
     // vis segmentation
     auto vis_seg = visual_segmentation(trend_full, timeline, spec.seg_number);
     double vis_score = 0;
@@ -83,8 +97,10 @@ int main(int argc, char* argv[])
         vis_score += seg_score[time_range_idx(t)];
         vis_segpoint.push_back(t.first);
     }
+    auto vis_end = CurrentTimeMillis();
+    cout << "vis time: " << double(vis_end - vis_start) / 1000;
 
-    ofstream fout("output.json");
+    ofstream fout(output_prefix + "output.json");
 
     fout << "{" << endl;
     fout << "\"measurement\":" << endl;
@@ -101,23 +117,20 @@ int main(int argc, char* argv[])
     fout << "\"cascading\": " << cascading_time << "," << endl;
     fout << "\"compute_sim\": " << compute_sim_time << "," << endl;
     fout << "\"search\": " << compute_segment_time << "," << endl;
-    fout << "\"overall\": " << compute_trendline_time + compute_metric_time + cascading_time + compute_sim_time + compute_segment_time << endl;
+    fout << "\"overall\": " << compute_trendline_time + compute_metric_time + cascading_time + compute_sim_time + compute_segment_time << "," << endl;
+    fout << "\"vis_segment\": [";
+    for (int p : vis_segpoint) {
+        fout << p << ", ";
+    }
+    fout << T - 1 << "]" << endl;
     fout << "}," << endl;
     fout << "\"result\":" << endl;
-
     fout << "[" << endl;
     
     for (int firstN = 0; firstN < spec.seg_number; ++firstN)
     {
         starts = all_starts[firstN];
-
-        if (false) { // get vis_segmentation_only
-            if (firstN == spec.seg_number - 1) {
-                cout << "seg" << endl;
-                for (auto i : starts) cout << i << endl;
-                starts = vis_segpoint;
-            }
-        }
+        int N = firstN;
 
         fout << "{" << endl;
         fout << "\"timeline\":" << endl;
@@ -137,7 +150,7 @@ int main(int argc, char* argv[])
         fout << "]," << endl;
 
         vector<int> tmp;
-        for (int i = 0; i <= firstN; ++i) tmp.push_back(starts[i]);
+        for (int i = 0; i <= N; ++i) tmp.push_back(starts[i]);
         tmp.push_back(timeline.size() - 1);
         sort(tmp.begin(), tmp.end());
 
@@ -194,8 +207,9 @@ int main(int argc, char* argv[])
     fout << "}" << endl;
 
     fout.close();
-
-    ofstream flog("segments.txt");
+    
+    if (timeline.size() > 1000) return 0;
+    ofstream flog(output_prefix + "segments.txt");
     for (int Ln = 1; Ln < timeline.size(); ++Ln) {
         for (int i = 0; i < timeline.size() - Ln; ++i) {
             int j = i + Ln;

@@ -445,6 +445,12 @@ void cascading(int first, int last, const Spec& spec)
         }
     }
     else {
+        for (int st = first; st <= last-1; ++st) {
+            int ed = st + 1;
+            if (explanation_computed[time_range_idx(make_pair(st, ed))]) continue;
+            __cascading(st, ed, spec);
+            explanation_computed[time_range_idx(make_pair(st, ed))] = true;
+        }
         for (int ii = 0; ii < valid_time_idx.size(); ++ii) {
             for (int jj = ii + 1; jj < valid_time_idx.size(); ++jj) {
                 int st = valid_time_idx[ii];

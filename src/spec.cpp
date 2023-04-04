@@ -124,5 +124,15 @@ Spec parse_spec_from_file(string spec_path)
     getline(f, line);
     spec.cascading_opt = stoi(trim(line.substr(line.find_first_of(':') + 1)));
 
+    //starts_number: [the number of fixed starts, 0 or seg_number]
+    //[starts_1]
+    //...
+    getline(f, line);
+    int n_starts = stoi(trim(line.substr(line.find_first_of(':') + 1)));
+    while (n_starts--) {
+        getline(f, line);
+        spec.starts.push_back(stoi(trim(line)));
+    }
+
     return spec;
 }

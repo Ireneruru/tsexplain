@@ -128,6 +128,8 @@ struct Spec {
     int min_dist; // min_dist: 0: two segments can have overlapping ending points; 1: two segments can not have overlapping ending points
 
     int cascading_opt;
+
+    vector<int> starts;
 };
 
 

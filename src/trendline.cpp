@@ -170,12 +170,18 @@ void compute_metric_scores(const Spec& spec)
             }
         }
         else {
+            for (int i = 0; i < T - 1; ++i) {
+                int j = i + 1;
+                auto time_range = make_pair(i, j);
+                auto sc = MChangeAbs(trendfull, trend, i, j);
+                sc.first += k * 1E-6; // remove randomness
+                pred_scores[time_range_idx(time_range)][k] = sc;
+            }
             for (int ii = 0; ii < valid_time_idx.size(); ++ii) {
                 for (int jj = ii + 1; jj < valid_time_idx.size(); ++jj) {
                     int i = valid_time_idx[ii];
                     int j = valid_time_idx[jj];
                     auto time_range = make_pair(i, j);
-
                     auto sc = MChangeAbs(trendfull, trend, i, j);
                     sc.first += k * 1E-6; // remove randomness
                     pred_scores[time_range_idx(time_range)][k] = sc;

@@ -117,7 +117,7 @@ void dp_optimal_fixedk(const Spec& spec)
 
     F.clear();
     G.clear();
-    F.resize(T * (SegN + 1));
+    F.resize(T * (SegN + 1), -1E30);
     G.resize(T * (SegN + 1));
 
     for (int n = 1; n <= SegN; ++n) {

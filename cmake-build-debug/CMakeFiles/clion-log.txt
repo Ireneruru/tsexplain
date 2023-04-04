@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -G "CodeBlocks - Unix Makefiles" /Users/yiru/Project/tsdemo
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/yiru/Project/tsdemo/cmake-build-debug
