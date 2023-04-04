@@ -1,9 +1,9 @@
 tsv_file: demo_data.tsv
 feature_hier_number: 1
 feature_number: 3
-symbol
 category
 subcategory
+symbol
 time_col_number: 1
 index
 try_seg_len_ratio: 1
