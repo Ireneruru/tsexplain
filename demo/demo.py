@@ -330,7 +330,7 @@ if if_sidebar_explore or if_explore:
         data['Top-' + str(i+1) + ' Explain'] = []
     for seg in res["segments"]:
         data['Segment'].append(data_t[seg["begin"]] + "-" + data_t[seg["end"]])
-        data['Pureness'].append(1 - seg["sim"] / (seg["end"] - seg["begin"]))
+        data['Variance'].append(1 - seg["sim"] / (seg["end"] - seg["begin"]))
         for m in range(TOPK):
             expl = seg["explanation"][m]
             pred = ",".join(p[1] for p in expl["predicate"])
