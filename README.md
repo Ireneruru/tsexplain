@@ -2,6 +2,14 @@
 
 This is the codebase for [full paper](https://arxiv.org/pdf/2211.10909.pdf) published at ICDE 2023 and the [demo paper](https://dl.acm.org/doi/abs/10.1145/3514221.3520153) published at SIGMOD. 
 
+## Compile TSExplain
+
+```
+mkdir build
+cd build
+cmake ..
+make
+```
 
 ## Run the demo interface
 
