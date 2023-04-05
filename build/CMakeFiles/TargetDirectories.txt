@@ -1,3 +1,0 @@
-/Users/yiru/Project/tsdemo/build/CMakeFiles/tsexplainC.dir
-/Users/yiru/Project/tsdemo/build/CMakeFiles/edit_cache.dir
-/Users/yiru/Project/tsdemo/build/CMakeFiles/rebuild_cache.dir
