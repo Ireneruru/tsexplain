@@ -1,18 +1,20 @@
 tsv_file: demo_data.tsv
 feature_hier_number: 1
-feature_number: 1
-state
+feature_number: 3
+category
+subcategory
+symbol
 time_col_number: 1
 index
 try_seg_len_ratio: 1
 try_total_len_ratio: 1
-val_col: daily-confirmed-cases
+val_col: FreeFloatCap
 supp_ratio: 0
-time_min: 21
-time_max: 365
+time_min: 1
+time_max: 274
 post_process: 7
-explain_time_min: 21
-explain_time_max: 365
+explain_time_min: 1
+explain_time_max: 274
 metric: MChangeAbs
 topK: 3
 pred_len: -1
