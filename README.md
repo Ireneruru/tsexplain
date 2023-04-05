@@ -11,6 +11,12 @@ cmake ..
 make
 ```
 
+## Install Python dependencies
+
+```
+pip install matplotlib streamlit
+```
+
 ## Run the demo interface
 
 ```
