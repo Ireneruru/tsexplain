@@ -9,6 +9,10 @@ You can find related [full paper](https://arxiv.org/pdf/2211.10909.pdf) publishe
 
 [Project page](https://www.cs.columbia.edu/~chen1ru/TSExplain.html)
 
+## Demo
+https://user-images.githubusercontent.com/13096451/235597495-aa3ab80d-4d41-4a3b-9142-c786aa9bb278.mp4
+
+
 ## Compile TSExplain
 
 ```
