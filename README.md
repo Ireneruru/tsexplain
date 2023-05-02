@@ -1,6 +1,13 @@
-# TSExplain
+# TSExplain: Explaining Aggregated Time Series by Surfacing Evolving Contributors
 
-This is the codebase for [full paper](https://arxiv.org/pdf/2211.10909.pdf) published at ICDE 2023 and the [demo paper](https://dl.acm.org/doi/abs/10.1145/3514221.3520153) published at SIGMOD. 
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+> TSExplain helps you find the evolving explanations of the aggregated time series! 
+
+Aggregated time series are generated effortlessly everywhere, e.g., "total confirmed covid-19 cases since 2019" and "total liquor sales over time." Understanding "how" and "why" these key performance indicators (KPI) evolve over time is critical to making data-informed decisions. Existing explanation engines focus on explaining one aggregated value or the difference between two relations. However, this falls short of explaining KPIs' continuous changes over time. ***TSEXPLAIN is a system that explains aggregated time series by surfacing the underlying evolving top contributors.***
+
+You can find related [full paper](https://arxiv.org/pdf/2211.10909.pdf) published at ICDE 2023 and the [demo paper](https://dl.acm.org/doi/abs/10.1145/3514221.3520153) published at SIGMOD. 
+
+[Project page](https://www.cs.columbia.edu/~chen1ru/TSExplain.html)
 
 ## Compile TSExplain
 
